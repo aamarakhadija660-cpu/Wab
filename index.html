@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday to my handsome solaimane!</title>
+    <style>
+        body {
+            font-family: 'Dancing Script', cursive; /* خط رقيق وجميل */
+            background: linear-gradient(135deg, #000000, #111111); /* خلفية سوداء */
+            background-size: 400% 400%;
+            animation: lights 5s ease-in-out infinite; /* تأثير أضواء متحركة */
+            text-align: center;
+            padding: 50px;
+            color: #ffffff; /* نص أبيض ليبرز على الخلفية السوداء */
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        @keyframes lights {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        .birthday-title {
+            font-size: 4em;
+            font-weight: bold; /* خط عريض */
+            color: #ffcc00; /* لون ذهبي للعنوان */
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        .message {
+            font-size: 1.8em;
+            line-height: 1.6;
+            margin: 20px 0;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+        }
+        .from {
+            font-size: 1.5em;
+            font-style: italic;
+            margin-top: 30px;
+            color: #ff6699; /* لون وردي للإشارة */
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1.2em;
+            background: #ff3366;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+        button:hover {
+            background: #cc0055;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet"> <!-- خط جميل من Google Fonts -->
+</head>
+<body>
+    <div class="birthday-title">Happy Birthday to you</div>
+    <div class="message">
+        On this special day, I want to wish you all the happiness in the world<br>
+      May your life be filled with joy, success, and everything your heart desires<br>
+      You are truly the most beautiful Suleiman in the world, and Im so lucky to have you<br>
+      Happy Birthday once again!<br>
+      i love you so much than anything else🤍<br>
+    </div>
+    <div class="from">From Khadija </div>
+    <div class="from">muaah💋</div>
+    <div class="from">love you</div>
+    <button onclick="playSong()">click here</button>
+    
+    <script>
+        function playSong() {
+            // Simple beep-based "Happy Birthday" melody using Web Audio API
+            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            const notes = [
+                { freq: 261.63, duration: 0.5 }, // C
+                { freq: 261.63, duration: 0.5 }, // C
+                { freq: 293.66, duration: 1 },   // D
+                { freq: 261.63, duration: 1 },   // C
+                { freq: 349.23, duration: 1 },   // F
+                { freq: 329.63, duration: 2 },   // E
+                // Add more notes for full song if desired
+            ];
+            
+            let time = audioContext.currentTime;
+            notes.forEach(note => {
+                const oscillator = audioContext.createOscillator();
+                oscillator.frequency.setValueAtTime(note.freq, time);
+                oscillator.connect(audioContext.destination);
+                oscillator.start(time);
+                oscillator.stop(time + note.duration);
+                time += note.duration;
+            });
+        }
+    </script>
+</body>
+</html>
